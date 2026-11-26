@@ -124,7 +124,7 @@ export default function Office() {
                                     <td className="border border-black px-4 py-2">{office.name}</td>
                                     <td className="border border-black px-4 py-2">{office.officeNumber}</td>
                                     <td className="border border-black px-4 py-2">
-                                        <button type="button" onClick={() => deleteOfficeByNumber(office.officeNumber)} className="bg-red-500 text-white px-3 py-1 rounded-md uppercase text-sm">Delete</button>
+                                        <button type="button" onClick={() => deleteOfficeByNumber(office.officeNumber)} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md uppercase text-sm cursor-pointer">Delete</button>
                                     </td>
                                 </tr>
                             ))
