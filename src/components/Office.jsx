@@ -12,7 +12,7 @@ export default function Office() {
     useEffect(() => {
         fetchOffices();
     }, []);
-    
+
     async function fetchOffices() {
         try {
             const response = await axios.get("http://localhost:8082/api/offices");
@@ -81,21 +81,11 @@ export default function Office() {
             <span className="text-3xl uppercase">Save Office</span>
             <div className="grid grid-cols-1">
                 <span className="uppercase">Office Name: </span>
-                <input
-                    type="text"
-                    value={officeName}
-                    onChange={e => setOfficeName(e.target.value)}
-                    className="p-0.5 rounded-md px-2 border border-black"
-                />
+                <input type="text" value={officeName} onChange={e => setOfficeName(e.target.value)} className="p-0.5 rounded-md px-2 border border-black"/>
             </div>
             <div className="grid grid-cols-1">
                 <span className="uppercase">Office Number </span>
-                <input
-                    type="number"
-                    value={officeNumber}
-                    onChange={e => setOfficeNumber(e.target.value)}
-                    className="p-0.5 rounded-md px-2 border border-black"
-                />
+                <input type="number" value={officeNumber} onChange={e => setOfficeNumber(e.target.value)} className="p-0.5 rounded-md px-2 border border-black"/>
             </div>
             <LibraryButton buttonLabel={'SAVE'} buttonAction={saveOffice} />
 
@@ -103,36 +93,17 @@ export default function Office() {
                 <span className="text-3xl uppercase">Delete Office</span>
                 <div className="grid grid-cols-1">
                     <span className="uppercase">Office Number </span>
-                    <input
-                        type="number"
-                        value={officeNumber}
-                        onChange={e => setOfficeNumber(e.target.value)}
-                        className="p-0.5 rounded-md px-2 border border-black"
-                    />
+                    <input type="number" value={officeNumber} onChange={e => setOfficeNumber(e.target.value)} className="p-0.5 rounded-md px-2 border border-black"/>
                 </div>
                 <LibraryButton buttonLabel={'DELETE'} buttonAction={() => deleteOfficeByNumber(officeNumber)} />
             </div>
 
             <div className="flex flex-col gap-4 w-full mt-4">
                 <span className="text-3xl uppercase">Offices List</span>
-
-                {/* Search Input */}
                 <div className="flex items-center gap-2">
-                    <input
-                        type="text"
-                        placeholder="Search by office name or number..."
-                        value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
-                        className="p-1 rounded-md px-3 border border-black w-full max-w-md"
-                    />
+                    <input type="text" placeholder="Search by office name or number..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="p-1 rounded-md px-3 border border-black w-full max-w-md"/>
                     {searchQuery && (
-                        <button
-                            type="button"
-                            onClick={() => setSearchQuery("")}
-                            className="px-3 py-1 border border-black rounded-md uppercase text-sm"
-                        >
-                            Clear
-                        </button>
+                        <button type="button" onClick={() => setSearchQuery("")} className="px-3 py-1 border border-black rounded-md uppercase text-sm">Clear</button>
                     )}
                 </div>
 
@@ -147,19 +118,13 @@ export default function Office() {
                     </thead>
                     <tbody>
                         {filteredOffices.length > 0 ? (
-                            filteredOffices.map((office) => (
+                            filteredOffices.map((office,index) => (
                                 <tr key={office.id}>
-                                    <td className="border border-black px-4 py-2">{office.id}</td>
+                                    <td className="border border-black px-4 py-2">{index+1}</td>
                                     <td className="border border-black px-4 py-2">{office.name}</td>
                                     <td className="border border-black px-4 py-2">{office.officeNumber}</td>
                                     <td className="border border-black px-4 py-2">
-                                        <button
-                                            type="button"
-                                            onClick={() => deleteOfficeByNumber(office.officeNumber)}
-                                            className="bg-red-500 text-white px-3 py-1 rounded-md uppercase text-sm"
-                                        >
-                                            Delete
-                                        </button>
+                                        <button type="button" onClick={() => deleteOfficeByNumber(office.officeNumber)} className="bg-red-500 text-white px-3 py-1 rounded-md uppercase text-sm">Delete</button>
                                     </td>
                                 </tr>
                             ))
